@@ -116,6 +116,11 @@ void SerialRam::begin(bool la, uint8_t pin, SerialRam::ESPISpeed speed)
 
 void SerialRam::read(char *buffer, uint32_t address, uint32_t size)
 {
+
+	if (size == 0) {
+		return;
+	}
+
     initTransfer(INSTR_READ);
     sendAddress(address);
 
